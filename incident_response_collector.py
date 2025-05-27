@@ -25,23 +25,23 @@ def main():
 
     print(f"[+] Collecting Incident Response data in folder: {folder}")
 
-    # 1. System Uptime
+    #system uptime
     uptime = run_command("uptime")
     save_to_file(folder, "system_uptime.txt", uptime)
 
-    # 2. Logged-in users
+    #loggedin users
     users = run_command("who")
     save_to_file(folder, "logged_in_users.txt", users)
 
-    # 3. Running processes
+    #running processes
     processes = run_command("ps aux --sort=-%cpu")
     save_to_file(folder, "running_processes.txt", processes)
 
-    # 4. Network connections
+    #network connections
     netstat = run_command("netstat -tunap")
     save_to_file(folder, "network_connections.txt", netstat)
 
-    # 5. Recent syslog (last 100 lines)
+    #recent syslog 
     syslog_path = "/var/log/syslog"
     if os.path.exists(syslog_path):
         syslog = run_command(f"tail -n 100 {syslog_path}")
@@ -49,7 +49,7 @@ def main():
     else:
         save_to_file(folder, "syslog_recent.txt", "Syslog file not found or inaccessible.")
 
-    # 6. Basic file integrity (hashes of key system files)
+    #basic file integrity (hashes key system files)
     files_to_hash = ["/etc/passwd", "/etc/shadow", "/bin/bash", "/usr/bin/python3"]
     hashes = []
     for file in files_to_hash:
