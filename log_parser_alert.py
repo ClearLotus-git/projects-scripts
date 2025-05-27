@@ -49,12 +49,12 @@ def parse_log(file_path, threshold, time_window_minutes):
                 recent_attempts = [t for t in failed_attempts[ip] if t >= window_start]
                 failed_attempts[ip] = recent_attempts
 
-                # Check if threshold exceeded within time window
+                # Check if threshold exceeded within time window..
                 if len(recent_attempts) >= threshold and ip not in alert_ips:
                     print(f"[ALERT] IP {ip} has {len(recent_attempts)} failed login attempts within last {time_window_minutes} minutes (last attempt: {timestamp})")
                     alert_ips.add(ip)
 
-    # Summary report
+    #
     print("\nSummary of failed login attempts per IP (within last time window):")
     for ip, timestamps in failed_attempts.items():
         print(f"{ip}: {len(timestamps)} failed attempts")
