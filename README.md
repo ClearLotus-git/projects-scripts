@@ -1,3 +1,2 @@
-# Repo of projects
 
 
