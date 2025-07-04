@@ -93,3 +93,4 @@ if __name__ == '__main__':
                 print(f"[{entry['Time']}] {entry['Event ID']} - {entry['Description']} => {entry['Technique']} ({entry['Tactic']})")
                 if 'Logon Detail' in entry:
                     print(f"    Logon Detail: {entry['Logon Detail']}")
+   
