@@ -6,7 +6,7 @@ pip install pwn
 
 ```shell
 ./smtp-user-recon.py
-Usage: ./smtp-vrfy.py <SMTP Server> <Path to Wordlist
+Usage: ./smtp-vrfy.py <SMTP Server> <Path to Wordlist>
 ```
 
 
