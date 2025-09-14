@@ -1,9 +1,15 @@
-# Helper Bot
+# SOC Helper Bot
 
-## A tool where an analyst can input an alert, log snippet, or description and the bot will return:
+A lightweight python tool that assists SOC in mapping alerts or log descriptions to **<MITRE ATT&CK techniques**, 
+relevant **log sources**, and suggested **investigation steps**. 
 
-- Likely MITRE ATT&CK technique
+## Features
+-  Maps alert keywords to **MITRE ATT&CK techniques**  
+-  Suggests relevant **log sources / event IDs**  
+-  Provides **step-by-step triage guidance**  
+-  Runs as a simple **CLI tool** (no external dependencies)
 
-- Suggested log sources/fields to check
+## Installation 
 
-- First 3–5 investigation steps
+1. Clone the repository:
+2. 
