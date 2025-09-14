@@ -6,7 +6,7 @@
     "steps": [
       "Check parent process of PowerShell execution",
       "Look for obfuscation (Base64, IEX, long strings)",
-      "Pivot on user account and machine for lateral movement"
+      "Pivot on user account and host for related activity"
     ]
   },
   {
@@ -14,9 +14,59 @@
     "technique": "T1110 - Brute Force",
     "logs": ["Windows Security Log 4625", "Linux auth.log"],
     "steps": [
-      "Check if failures come from same IP or user",
+      "Check if failures come from the same IP or user",
       "Identify if login eventually succeeded",
-      "Correlate with geolocation and working hours"
+      "Correlate with geolocation or impossible travel"
+    ]
+  },
+  {
+    "keyword": "mimikatz",
+    "technique": "T1003.001 - LSASS Memory",
+    "logs": ["Sysmon Event ID 10 (ProcessAccess)", "Windows Security Log 4673/4674"],
+    "steps": [
+      "Look for process access requests to lsass.exe",
+      "Check parent process (often cmd.exe or powershell.exe)",
+      "Correlate with account privilege levels"
+    ]
+  },
+  {
+    "keyword": "rundll32",
+    "technique": "T1218.011 - Signed Binary Proxy Execution",
+    "logs": ["Sysmon Event ID 1", "Windows Security Log 4688"],
+    "steps": [
+      "Identify unusual DLL paths loaded by rundll32",
+      "Check command-line arguments for suspicious export functions",
+      "Trace execution chain back to originating user or script"
+    ]
+  },
+  {
+    "keyword": "suspicious service",
+    "technique": "T1543.003 - Windows Service",
+    "logs": ["Windows System Log 7045", "Sysmon Event ID 1"],
+    "steps": [
+      "Check newly installed or modified services",
+      "Verify binary path and digital signatures",
+      "Correlate with persistence attempts"
+    ]
+  },
+  {
+    "keyword": "encoded command",
+    "technique": "T1027 - Obfuscated Files or Information",
+    "logs": ["Sysmon Event ID 1", "Powershell 4104 ScriptBlockLogging"],
+    "steps": [
+      "Decode Base64 command (look for -enc or -EncodedCommand)",
+      "Check for IEX (Invoke-Expression) usage",
+      "Correlate with network connections after execution"
+    ]
+  },
+  {
+    "keyword": "suspicious outbound connection",
+    "technique": "T1071 - Application Layer Protocol",
+    "logs": ["Sysmon Event ID 3 (Network Connection)", "Firewall logs"],
+    "steps": [
+      "Check destination IP/port and reputation",
+      "Look for periodic beaconing behavior",
+      "Correlate with process initiating the connection"
     ]
   }
 ]
