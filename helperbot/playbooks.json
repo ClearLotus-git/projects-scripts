@@ -1,0 +1,22 @@
+[
+  {
+    "keyword": "powershell",
+    "technique": "T1059.001 - PowerShell",
+    "logs": ["Sysmon Event ID 1 (Process Creation)", "Windows Security Log 4688"],
+    "steps": [
+      "Check parent process of PowerShell execution",
+      "Look for obfuscation (Base64, IEX, long strings)",
+      "Pivot on user account and machine for lateral movement"
+    ]
+  },
+  {
+    "keyword": "failed login",
+    "technique": "T1110 - Brute Force",
+    "logs": ["Windows Security Log 4625", "Linux auth.log"],
+    "steps": [
+      "Check if failures come from same IP or user",
+      "Identify if login eventually succeeded",
+      "Correlate with geolocation and working hours"
+    ]
+  }
+]
