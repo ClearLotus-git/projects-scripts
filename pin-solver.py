@@ -1,7 +1,7 @@
 import requests
 
-ip = "127.0.0.1"  # Change this to your instance IP address
-port = 1234       # Change this to your instance port number
+ip = "127.0.0.1"  # Change this to your IP address
+port = 1234       # Change this to your port number
 
 # Try every possible 4-digit PIN (from 0000 to 9999)
 for pin in range(10000):
