@@ -6,9 +6,9 @@ client = Client("http://localhost:8000/mcp/")
 async def main():
     async with client:
         tools = await client.list_tools()
-        result_object = await client.get_prompt("spell_check", {"text": "Hello World!"})
-        prompt_text = result_object.messages[0].content.text
+        result_object = await client.call_tool("store_file", {"file_content": "Hello World!", "file_name": "helloworld"})
+        result_text = result_object.content[0].text
 
-        print(f"*** Available Prompts:\n{prompts}\n*** Prompt Result:\n{prompt_text}\n")
+        print(f"*** Available Tools:\n{tools}\n*** Tool Result:\n{result_text}\n")
 
 asyncio.run(main())
